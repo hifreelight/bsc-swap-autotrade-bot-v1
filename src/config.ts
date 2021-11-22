@@ -1,4 +1,4 @@
-import {Currency, Pair, ChainId, Token, Percent, JSBI, WETH} from "@godtoy/pancakeswap-sdk-v2";
+import { Currency, Pair, ChainId, Token, Percent, JSBI, WETH } from "@godtoy/pancakeswap-sdk-v2";
 import * as ethers from "ethers";
 import env from 'dotenv'
 
@@ -7,8 +7,9 @@ const envConfig = env.config();
 export const config: any = {
     id: 1,
     name: 'BSC Mainnet',
+    provider: 'https://bsc-dataseed1.ninicoin.io',
     // provider: 'https://bsc-dataseed1.binance.org',
-    provider: 'https://bsc-dataseed1.defibit.io',
+    // provider: 'https://bsc-dataseed1.defibit.io',
     scan: 'https://api.bscscan.com/api',
     ws: "wss://bsc-ws-node.nariox.org:443",
     explore: 'https://bscscan.com/',
@@ -29,9 +30,9 @@ config.ROUTE_ADDRESS = ROUTES[config.ROUTE_SWAP_CHOOSE]
 if (!config.ROUTE_ADDRESS) {
     throw new Error("require route swap address")
 }
-
+console.log("config.ws %s", config.ws);
 export const provider = new ethers.providers.JsonRpcProvider(config.provider) //https://dataseed1.binance.org
-export const websocketProvider = new ethers.providers.WebSocketProvider(config.ws) //https://dataseed1.binance.org
+// export const websocketProvider = new ethers.providers.WebSocketProvider(config.ws) //https://dataseed1.binance.org
 
 //multicall contract address
 //合约 https://bscscan.com/address/0x1Ee38d535d541c55C9dae27B12edf090C608E6Fb#code
